@@ -1,0 +1,112 @@
+[
+  {
+    "pregunta": "Cual es la capital de Espana?",
+    "opcionA": "Barcelona",
+    "opcionB": "Madrid",
+    "opcionC": "Valencia",
+    "opcionD": "Sevilla",
+    "correcta": "B",
+    "nivel": 1,
+    "pista": "Es donde esta el gobierno",
+    "categoria": "Geografia"
+  },
+  {
+    "pregunta": "Cuanto es 2 + 2?",
+    "opcionA": "3",
+    "opcionB": "4",
+    "opcionC": "5",
+    "opcionD": "6",
+    "correcta": "B",
+    "nivel": 1,
+    "pista": "Es un numero par",
+    "categoria": "Matematicas"
+  },
+  {
+    "pregunta": "Que planeta esta mas cerca del Sol?",
+    "opcionA": "Venus",
+    "opcionB": "Tierra",
+    "opcionC": "Mercurio",
+    "opcionD": "Marte",
+    "correcta": "C",
+    "nivel": 1,
+    "pista": "Es el mas pequeno",
+    "categoria": "Ciencia"
+  },
+  {
+    "pregunta": "Que color resulta de mezclar rojo y blanco?",
+    "opcionA": "Rosa",
+    "opcionB": "Morado",
+    "opcionC": "Naranja",
+    "opcionD": "Gris",
+    "correcta": "A",
+    "nivel": 1,
+    "pista": "Color tipico de flores",
+    "categoria": "Arte"
+  },
+  {
+    "pregunta": "Cual es el oceano mas grande?",
+    "opcionA": "Atlantico",
+    "opcionB": "Indico",
+    "opcionC": "Artico",
+    "opcionD": "Pacifico",
+    "correcta": "D",
+    "nivel": 1,
+    "pista": "Su nombre indica tranquilidad",
+    "categoria": "Geografia"
+  },
+  {
+    "pregunta": "Que animal dice miau?",
+    "opcionA": "Perro",
+    "opcionB": "Gato",
+    "opcionC": "Vaca",
+    "opcionD": "Caballo",
+    "correcta": "B",
+    "nivel": 1,
+    "pista": "Es una mascota comun",
+    "categoria": "Animales"
+  },
+  {
+    "pregunta": "Cuantos dias tiene una semana?",
+    "opcionA": "5",
+    "opcionB": "6",
+    "opcionC": "7",
+    "opcionD": "8",
+    "correcta": "C",
+    "nivel": 1,
+    "pista": "Incluye sabado y domingo",
+    "categoria": "General"
+  },
+  {
+    "pregunta": "Que instrumento tiene teclas blancas y negras?",
+    "opcionA": "Guitarra",
+    "opcionB": "Piano",
+    "opcionC": "Bateria",
+    "opcionD": "Flauta",
+    "correcta": "B",
+    "nivel": 1,
+    "pista": "Se usa en musica clasica",
+    "categoria": "Musica"
+  },
+  {
+    "pregunta": "Que gas respiramos para vivir?",
+    "opcionA": "Oxigeno",
+    "opcionB": "Hidrogeno",
+    "opcionC": "Helio",
+    "opcionD": "CO2",
+    "correcta": "A",
+    "nivel": 1,
+    "pista": "Esta en el aire",
+    "categoria": "Ciencia"
+  },
+  {
+    "pregunta": "Que deporte se juega con un balon redondo?",
+    "opcionA": "Tenis",
+    "opcionB": "Futbol",
+    "opcionC": "Golf",
+    "opcionD": "Natacion",
+    "correcta": "B",
+    "nivel": 1,
+    "pista": "Es el deporte mas popular",
+    "categoria": "Deportes"
+  }
+]
