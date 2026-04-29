@@ -74,9 +74,9 @@ Actualmente, el código fuente está organizado siguiendo el patrón de diseño 
     * Leandro (@Leo99990)
     * Paula (@PaulaNuñezRamos)
     * Gaspar (@Gaspar089)
-    * Yael (YaelSolé
+    * Yael (@YaelSolé)
 *   **Profesores Evaluadores:**
-    *   Yolanda Moreno (@YMorenoG) - Programación / Base de Datos
-    *   David García (@DavidGarciaEFA) - Entornos de Desarrollo
-    *   Jesús Santiago Rico (@JesusEFA) - Digitalización / Proyecto Intermodular
+    *   Yolanda Moreno (@YMorenoG) - Entornos de Desarrollo
+    *   David García (@DavidGarciaEFA) - Programación
+    *   Jesús Santiago Rico (@JesusEFA) - Base de datos
 """
