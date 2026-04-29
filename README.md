@@ -69,7 +69,12 @@ Actualmente, el código fuente está organizado siguiendo el patrón de diseño 
 
 ## 👥 Equipo y Colaboradores
 
-*   **Alumnos:** [Cristopher, Leandro, Paula, Gaspar, Yael]
+*   **Alumnos:**
+    * Cristopher (@crissxxs)
+    * Leandro (@Leo99990)
+    * Paula (@PaulaNuñezRamos)
+    * Gaspar (@Gaspar089)
+    * Yael (YaelSolé
 *   **Profesores Evaluadores:**
     *   Yolanda Moreno (@YMorenoG) - Programación / Base de Datos
     *   David García (@DavidGarciaEFA) - Entornos de Desarrollo
