@@ -1,4 +1,4 @@
-![El Concursillo Banner](assets/banner.png)
+![El Concursillo Banner](Concursillo/src/assets/banner.png)
 
 Este proyecto es una aplicación desarrollada en Java que simula un juego de preguntas y respuestas inspirado en el famoso formato televisivo *"¿Quién quiere ser millonario?"*, pero adaptado y personalizado al estilo del streamer **IlloJuan**.
 
