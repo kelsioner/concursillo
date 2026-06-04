@@ -106,6 +106,7 @@ public class Pregunta {
         if (obj == null || getClass() != obj.getClass()) return false;
 
         Pregunta otra = (Pregunta) obj;
+        if (this.pregunta == null) return otra.pregunta == null;
         return this.pregunta.equals(otra.pregunta);
     }
 
