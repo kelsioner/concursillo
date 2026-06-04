@@ -37,7 +37,7 @@ public class PantallaPrin extends JFrame {
 					PantallaPrin frame = new PantallaPrin();
 					frame.setVisible(true);
 				} catch (Exception e) {
-					e.printStackTrace();
+					System.err.println("Error al iniciar PantallaPrin: " + e.getMessage());
 				}
 			}
 		});
@@ -256,11 +256,16 @@ public class PantallaPrin extends JFrame {
 		panel.add(btnCancelar);
 
 		btnAceptar.addActionListener(e -> {
-			if (!txtNombre.getText().trim().isEmpty()) {
-				nombre[0] = txtNombre.getText().trim();
-				dialogo.dispose();
-			} else {
+			String entrada = txtNombre.getText().trim();
+			if (entrada.isEmpty()) {
 				JOptionPane.showMessageDialog(dialogo, "Debes introducir un nombre.");
+			} else if (entrada.length() > 30) {
+				JOptionPane.showMessageDialog(dialogo, "El nombre no puede tener más de 30 caracteres.");
+			} else if (!entrada.matches("[a-zA-ZáéíóúÁÉÍÓÚñÑüÜ0-9 _-]+")) {
+				JOptionPane.showMessageDialog(dialogo, "El nombre contiene caracteres no permitidos.");
+			} else {
+				nombre[0] = entrada;
+				dialogo.dispose();
 			}
 		});
 

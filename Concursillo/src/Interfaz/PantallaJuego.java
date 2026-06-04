@@ -51,7 +51,7 @@ public class PantallaJuego extends JFrame {
 					PantallaJuego frame = new PantallaJuego();
 					frame.setVisible(true);
 				} catch (Exception e) {
-					e.printStackTrace();
+					System.err.println("Error al iniciar PantallaJuego: " + e.getMessage());
 				}
 			}
 		});
@@ -324,23 +324,23 @@ public class PantallaJuego extends JFrame {
 		}
 
 		btnPreguntas.setText("<html><div style='text-align:center; width:600px;'>"
-				+ pregunta.getPregunta()
+				+ escaparHtml(pregunta.getPregunta())
 				+ "</div></html>");
 
 		btnRespuestaA.setText("<html><div style='text-align:center; width:280px;'>A: "
-				+ pregunta.getOpcionA()
+				+ escaparHtml(pregunta.getOpcionA())
 				+ "</div></html>");
 
 		btnRespuestaB.setText("<html><div style='text-align:center; width:280px;'>B: "
-				+ pregunta.getOpcionB()
+				+ escaparHtml(pregunta.getOpcionB())
 				+ "</div></html>");
 
 		btnRespuestaC.setText("<html><div style='text-align:center; width:280px;'>C: "
-				+ pregunta.getOpcionC()
+				+ escaparHtml(pregunta.getOpcionC())
 				+ "</div></html>");
 
 		btnRespuestaD.setText("<html><div style='text-align:center; width:280px;'>D: "
-				+ pregunta.getOpcionD()
+				+ escaparHtml(pregunta.getOpcionD())
 				+ "</div></html>");
 
 		actualizarInfo();
@@ -619,6 +619,17 @@ public class PantallaJuego extends JFrame {
 		}
 
 		return -1;
+	}
+
+	private static String escaparHtml(String texto) {
+		if (texto == null) {
+			return "";
+		}
+		return texto
+				.replace("&", "&amp;")
+				.replace("<", "&lt;")
+				.replace(">", "&gt;")
+				.replace("\"", "&quot;");
 	}
 
 	private boolean mostrarConfirmacionPlantarse() {
