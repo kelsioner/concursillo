@@ -61,6 +61,32 @@ public class Partida {
 		cargarNuevaPregunta();
 	}
 
+	Partida(String nombreJugador, GestorPreguntas gestorPreguntas,
+			GestorPuntuaciones gestorPuntuaciones, Pregunta preguntaInicial) {
+		this.nombreJugador = nombreJugador;
+		this.gestorPreguntas = gestorPreguntas;
+		this.gestorPuntuaciones = gestorPuntuaciones;
+
+		this.nivelActual = 1;
+		this.dineroAcumulado = 0;
+		this.partidaTerminada = false;
+		this.puntuacionGuardada = false;
+
+		this.comodin5050Usado = false;
+		this.comodinPublicoUsado = false;
+		this.comodinLlamadaUsado = false;
+		this.comodinSacrificioUsado = false;
+		this.comodinRuletaUsado = false;
+		this.comodinMagoUsado = false;
+		this.ultimoNumeroRuleta = -1;
+		this.recuperacionComodinUsada = false;
+
+		this.preguntaActual = preguntaInicial;
+		if (this.preguntaActual == null) {
+			this.partidaTerminada = true;
+		}
+	}
+
 	private void cargarNuevaPregunta() {
 		int nivelDificultad = calcularNivelDificultad();
 		this.preguntaActual = gestorPreguntas.obtenerPreguntaAleatoria(nivelDificultad);
