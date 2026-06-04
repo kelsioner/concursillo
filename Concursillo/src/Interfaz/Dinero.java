@@ -3,8 +3,6 @@ package Interfaz;
 import java.awt.Color;
 import java.awt.EventQueue;
 import java.awt.Font;
-import java.awt.Toolkit;
-import java.net.URL;
 
 import javax.swing.ImageIcon;
 import javax.swing.JFrame;
@@ -13,17 +11,16 @@ import javax.swing.JPanel;
 import javax.swing.SwingConstants;
 import javax.swing.border.EmptyBorder;
 
+import util.ConstantesJuego;
+import util.UIUtils;
+
 public class Dinero extends JFrame {
 
 	private static final long serialVersionUID = 1L;
 
 	private JPanel contentPane;
 
-	private final int[] premios = {
-			0, 100, 250, 500, 750, 1500, 2500, 5000,
-			10000, 20000, 30000, 50000, 100000, 300000,
-			600000, 1000000
-	};
+	private final int[] premios = ConstantesJuego.PREMIOS;
 
 	public static void main(String[] args) {
 		EventQueue.invokeLater(new Runnable() {
@@ -44,13 +41,7 @@ public class Dinero extends JFrame {
 
 	public Dinero(String nombreJugador, int nivelActual, int dineroAcumulado) {
 
-		URL iconoVentana = getClass().getResource("/assets/Logo Grande.png");
-
-		if (iconoVentana != null) {
-			setIconImage(Toolkit.getDefaultToolkit().getImage(iconoVentana));
-		} else {
-			System.out.println("No se encontró el icono de la ventana.");
-		}
+		UIUtils.configurarIconoVentana(this, getClass());
 
 		setTitle("Dinero acumulado");
 		setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
@@ -121,18 +112,10 @@ public class Dinero extends JFrame {
 	}
 
 	private String formatearDinero(int cantidad) {
-		return String.format("%,d €", cantidad).replace(",", ".");
+		return UIUtils.formatearDinero(cantidad);
 	}
 
 	private ImageIcon cargarIcono(String ruta) {
-
-		URL url = getClass().getResource(ruta);
-
-		if (url == null) {
-			System.out.println("No se encontró la imagen: " + ruta);
-			return null;
-		}
-
-		return new ImageIcon(url);
+		return UIUtils.cargarIcono(ruta, getClass());
 	}
 }

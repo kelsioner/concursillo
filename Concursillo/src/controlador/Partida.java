@@ -8,6 +8,7 @@ import basedatos.GestorPreguntas;
 import basedatos.GestorPuntuaciones;
 import modelo.Pregunta;
 import modelo.Puntuacion;
+import util.ConstantesJuego;
 
 @SuppressWarnings("unused")
 public class Partida {
@@ -27,9 +28,7 @@ public class Partida {
 
 	private Random random = new Random();
 
-	// Posicion 0 no se usa. Asi podemos usar PREMIOS[1] hasta PREMIOS[15]
-	private final int[] PREMIOS = { 0, 100, 250, 500, 750, 1500, 2500, 5000, 10000, 20000, 30000, 50000, 100000, 300000,
-			600000, 1000000 };
+	private final int[] PREMIOS = ConstantesJuego.PREMIOS;
 
 	// Estado de los comodines
 	private boolean comodin5050Usado;
@@ -161,25 +160,7 @@ public class Partida {
 			return new String[0];
 		}
 		comodin5050Usado = true;
-
-		ArrayList<String> incorrectas = obtenerOpcionesIncorrectas();
-
-		if (opcionesYaEliminadas != null) {
-			for (String opcion : opcionesYaEliminadas) {
-				incorrectas.remove(opcion);
-			}
-		}
-
-		Collections.shuffle(incorrectas);
-		int cantidadEliminar = 2;
-		if (cantidadEliminar > incorrectas.size()) {
-			cantidadEliminar = incorrectas.size();
-		}
-		String[] opcionesEliminadas = new String[cantidadEliminar];
-		for (int i = 0; i < cantidadEliminar; i++) {
-			opcionesEliminadas[i] = incorrectas.get(i);
-		}
-		return opcionesEliminadas;
+		return eliminarOpcionesIncorrectas(opcionesYaEliminadas, 2);
 	}
 
 	// ---------------- COMODIN PUBLICO / CHAT ----------------
@@ -266,26 +247,8 @@ public class Partida {
 			return new String[0];
 		}
 		comodinRuletaUsado = true;
-		// La ruleta puede sacar 0, 1, 2 o 3
 		ultimoNumeroRuleta = random.nextInt(4);
-		ArrayList<String> incorrectas = obtenerOpcionesIncorrectas();
-		// Quitamos de la lista las opciones que ya estaban eliminadas
-		if (opcionesYaEliminadas != null) {
-			for (String opcion : opcionesYaEliminadas) {
-				incorrectas.remove(opcion);
-			}
-		}
-		Collections.shuffle(incorrectas);
-		int cantidadEliminar = ultimoNumeroRuleta;
-		// Si quedan menos incorrectas disponibles, solo elimina las que pueda
-		if (cantidadEliminar > incorrectas.size()) {
-			cantidadEliminar = incorrectas.size();
-		}
-		String[] eliminadas = new String[cantidadEliminar];
-		for (int i = 0; i < cantidadEliminar; i++) {
-			eliminadas[i] = incorrectas.get(i);
-		}
-		return eliminadas;
+		return eliminarOpcionesIncorrectas(opcionesYaEliminadas, ultimoNumeroRuleta);
 	}
 
 	// ---------------- COMODIN MAGO ----------------
@@ -313,6 +276,22 @@ public class Partida {
 	}
 
 	// ---------------- METODOS AUXILIARES ----------------
+
+	private String[] eliminarOpcionesIncorrectas(ArrayList<String> opcionesYaEliminadas, int cantidad) {
+		ArrayList<String> incorrectas = obtenerOpcionesIncorrectas();
+		if (opcionesYaEliminadas != null) {
+			for (String opcion : opcionesYaEliminadas) {
+				incorrectas.remove(opcion);
+			}
+		}
+		Collections.shuffle(incorrectas);
+		int cantidadEliminar = Math.min(cantidad, incorrectas.size());
+		String[] eliminadas = new String[cantidadEliminar];
+		for (int i = 0; i < cantidadEliminar; i++) {
+			eliminadas[i] = incorrectas.get(i);
+		}
+		return eliminadas;
+	}
 
 	private ArrayList<String> obtenerOpcionesIncorrectas() {
 		ArrayList<String> incorrectas = new ArrayList<String>();
