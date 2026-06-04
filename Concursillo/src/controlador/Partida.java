@@ -148,9 +148,13 @@ public class Partida {
 
 	private void guardarPuntuacion() {
 		if (!puntuacionGuardada) {
-			Puntuacion p = new Puntuacion(nombreJugador, dineroAcumulado);
-			gestorPuntuaciones.guardarPuntuacion(p);
-			puntuacionGuardada = true;
+			try {
+				Puntuacion p = new Puntuacion(nombreJugador, dineroAcumulado);
+				gestorPuntuaciones.guardarPuntuacion(p);
+				puntuacionGuardada = true;
+			} catch (Exception e) {
+				System.err.println("Error al guardar la puntuaci\u00f3n del jugador '" + nombreJugador + "': " + e.getMessage());
+			}
 		}
 	}
 

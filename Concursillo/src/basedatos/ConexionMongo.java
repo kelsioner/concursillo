@@ -15,9 +15,15 @@ public class ConexionMongo {
 
             String uri = "mongodb+srv://app_millonario:app_millonario@concursillo.5owslqy.mongodb.net/?retryWrites=true&w=majority&appName=Concursillo";
 
-            cliente = MongoClients.create(uri);
-
-            baseDatos = cliente.getDatabase("millonarioDB");
+            try {
+                cliente = MongoClients.create(uri);
+                baseDatos = cliente.getDatabase("millonarioDB");
+            } catch (Exception e) {
+                System.err.println("Error al conectar con MongoDB: " + e.getMessage());
+                cliente = null;
+                baseDatos = null;
+                throw new RuntimeException("No se pudo conectar con la base de datos.", e);
+            }
         }
 
         return baseDatos;
@@ -26,9 +32,14 @@ public class ConexionMongo {
     public static void cerrar() {
 
         if (cliente != null) {
-            cliente.close();
-            cliente = null;
-            baseDatos = null;
+            try {
+                cliente.close();
+            } catch (Exception e) {
+                System.err.println("Error al cerrar la conexión con MongoDB: " + e.getMessage());
+            } finally {
+                cliente = null;
+                baseDatos = null;
+            }
         }
     }
 }

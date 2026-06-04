@@ -35,8 +35,8 @@ public class testMongo {
             ConexionMongo.cerrar();
 
         } catch (Exception e) {
-            System.out.println("Error al conectar con MongoDB Atlas");
-            System.out.println(e.getMessage());
+            System.err.println("Error al conectar con MongoDB Atlas");
+            e.printStackTrace();
         }
     }
 }

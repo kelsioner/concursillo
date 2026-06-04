@@ -63,7 +63,21 @@ public class PantallaJuego extends JFrame {
 
 	public PantallaJuego(String nombreJugador) {
 
-		this.partida = new Partida(nombreJugador);
+		try {
+			this.partida = new Partida(nombreJugador);
+		} catch (Exception e) {
+			System.err.println("Error al iniciar la partida: " + e.getMessage());
+			JOptionPane.showMessageDialog(null,
+					"No se ha podido iniciar la partida.\nRevisa que MongoDB est\u00e9 funcionando.",
+					"Error",
+					JOptionPane.ERROR_MESSAGE);
+			EventQueue.invokeLater(() -> {
+				PantallaPrin menu = new PantallaPrin();
+				menu.setVisible(true);
+				dispose();
+			});
+			return;
+		}
 
 		URL iconoVentana = getClass().getResource("/assets/Logo Grande.png");
 
@@ -600,6 +614,7 @@ public class PantallaJuego extends JFrame {
 					+ "Posición actual en el ranking: " + posicion + ".";
 
 		} catch (Exception e) {
+			System.err.println("Error al comprobar el ranking: " + e.getMessage());
 			return "Tu partida ha terminado, pero no se ha podido comprobar el ranking.";
 		}
 	}

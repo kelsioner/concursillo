@@ -191,6 +191,7 @@ public class PantallaPrin extends JFrame {
 			mostrarVentanaTexto("Ranking", sb.toString());
 
 		} catch (Exception e) {
+			System.err.println("Error al cargar el ranking: " + e.getMessage());
 			JOptionPane.showMessageDialog(
 					this,
 					"No se ha podido cargar el ranking.\nRevisa que MongoDB esté funcionando.",

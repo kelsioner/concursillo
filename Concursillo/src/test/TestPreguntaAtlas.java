@@ -35,8 +35,8 @@ public class TestPreguntaAtlas {
             ConexionMongo.cerrar();
 
         } catch (Exception e) {
-            System.out.println("Error al leer pregunta:");
-            System.out.println(e.getMessage());
+            System.err.println("Error al leer pregunta:");
+            e.printStackTrace();
         }
     }
 }
