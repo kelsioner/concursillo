@@ -4,8 +4,6 @@ import java.awt.Color;
 import java.awt.EventQueue;
 import java.awt.Font;
 import java.awt.Image;
-import java.awt.Toolkit;
-import java.net.URL;
 import java.util.ArrayList;
 
 import javax.swing.BorderFactory;
@@ -24,6 +22,7 @@ import javax.swing.border.EmptyBorder;
 
 import basedatos.GestorPuntuaciones;
 import modelo.Puntuacion;
+import util.UIUtils;
 
 public class PantallaPrin extends JFrame {
 
@@ -45,13 +44,7 @@ public class PantallaPrin extends JFrame {
 
 	public PantallaPrin() {
 
-		URL iconoVentana = getClass().getResource("/assets/Logo Grande.png");
-
-		if (iconoVentana != null) {
-			setIconImage(Toolkit.getDefaultToolkit().getImage(iconoVentana));
-		} else {
-			System.out.println("No se encontró el icono de la ventana.");
-		}
+		UIUtils.configurarIconoVentana(this, getClass());
 
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		setBounds(100, 100, 846, 556);
@@ -201,19 +194,11 @@ public class PantallaPrin extends JFrame {
 	}
 
 	private String formatearDinero(int cantidad) {
-		return String.format("%,d €", cantidad).replace(",", ".");
+		return UIUtils.formatearDinero(cantidad);
 	}
 
 	private ImageIcon cargarIcono(String ruta) {
-
-		URL url = getClass().getResource(ruta);
-
-		if (url == null) {
-			System.out.println("No se encontró la imagen: " + ruta);
-			return null;
-		}
-
-		return new ImageIcon(url);
+		return UIUtils.cargarIcono(ruta, getClass());
 	}
 
 	private String pedirNombreJugador() {
@@ -273,13 +258,7 @@ public class PantallaPrin extends JFrame {
 	}
 
 	private JButton crearBotonDialogo(String texto) {
-		JButton boton = new JButton(texto);
-		boton.setFont(new Font("Arial", Font.BOLD, 13));
-		boton.setForeground(Color.WHITE);
-		boton.setBackground(new Color(0, 70, 150));
-		boton.setFocusPainted(false);
-		boton.setBorder(BorderFactory.createLineBorder(new Color(255, 220, 80), 1));
-		return boton;
+		return UIUtils.crearBotonDialogo(texto);
 	}
 
 	private void mostrarVentanaTexto(String titulo, String texto) {

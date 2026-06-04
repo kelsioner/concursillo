@@ -3,8 +3,6 @@ package Interfaz;
 import java.awt.Color;
 import java.awt.EventQueue;
 import java.awt.Font;
-import java.awt.Toolkit;
-import java.net.URL;
 import java.util.ArrayList;
 
 import javax.swing.BorderFactory;
@@ -22,6 +20,7 @@ import javax.swing.border.EmptyBorder;
 
 import controlador.Partida;
 import modelo.Pregunta;
+import util.UIUtils;
 
 import basedatos.GestorPuntuaciones;
 import modelo.Puntuacion;
@@ -65,13 +64,7 @@ public class PantallaJuego extends JFrame {
 
 		this.partida = new Partida(nombreJugador);
 
-		URL iconoVentana = getClass().getResource("/assets/Logo Grande.png");
-
-		if (iconoVentana != null) {
-			setIconImage(Toolkit.getDefaultToolkit().getImage(iconoVentana));
-		} else {
-			System.out.println("No se encontró el icono de la ventana.");
-		}
+		UIUtils.configurarIconoVentana(this, getClass());
 
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		setBounds(100, 100, 846, 555);
@@ -445,19 +438,11 @@ public class PantallaJuego extends JFrame {
 	}
 
 	private String formatearDinero(int cantidad) {
-		return String.format("%,d €", cantidad).replace(",", ".");
+		return UIUtils.formatearDinero(cantidad);
 	}
 
 	private ImageIcon cargarIcono(String ruta) {
-
-		URL url = getClass().getResource(ruta);
-
-		if (url == null) {
-			System.out.println("No se encontró la imagen: " + ruta);
-			return null;
-		}
-
-		return new ImageIcon(url);
+		return UIUtils.cargarIcono(ruta, getClass());
 	}
 
 	private void mostrarVentanaComodin(String titulo, String mensaje) {
@@ -501,13 +486,7 @@ public class PantallaJuego extends JFrame {
 	}
 
 	private JButton crearBotonDialogo(String texto) {
-		JButton boton = new JButton(texto);
-		boton.setFont(new Font("Arial", Font.BOLD, 13));
-		boton.setForeground(Color.WHITE);
-		boton.setBackground(new Color(0, 70, 150));
-		boton.setFocusPainted(false);
-		boton.setBorder(BorderFactory.createLineBorder(new Color(255, 220, 80), 1));
-		return boton;
+		return UIUtils.crearBotonDialogo(texto);
 	}
 
 	private void mostrarVentanaResultado(String titulo, String mensaje, boolean acierto) {
