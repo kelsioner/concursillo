@@ -13,7 +13,14 @@ public class ConexionMongo {
 
         if (cliente == null) {
 
-            String uri = "mongodb+srv://app_millonario:app_millonario@concursillo.5owslqy.mongodb.net/?retryWrites=true&w=majority&appName=Concursillo";
+            String uri = System.getenv("MONGO_URI");
+
+            if (uri == null || uri.isEmpty()) {
+                throw new IllegalStateException(
+                    "La variable de entorno MONGO_URI no está configurada. "
+                    + "Define MONGO_URI con la URI de conexión a MongoDB Atlas."
+                );
+            }
 
             cliente = MongoClients.create(uri);
 

@@ -12,7 +12,7 @@ public class PrincipalApp {
 					PantallaPrin ventana = new PantallaPrin();
 					ventana.setVisible(true);
 				} catch (Exception e) {
-					e.printStackTrace();
+					System.err.println("Error al iniciar la aplicación: " + e.getMessage());
 				}
 			}
 		});

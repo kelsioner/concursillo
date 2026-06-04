@@ -32,7 +32,7 @@ public class Dinero extends JFrame {
 					Dinero frame = new Dinero("Jugador", 1, 0);
 					frame.setVisible(true);
 				} catch (Exception e) {
-					e.printStackTrace();
+					System.err.println("Error al iniciar Dinero: " + e.getMessage());
 				}
 			}
 		});

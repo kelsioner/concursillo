@@ -110,6 +110,11 @@ public class Pregunta {
     }
 
     @Override
+    public int hashCode() {
+        return pregunta != null ? pregunta.hashCode() : 0;
+    }
+
+    @Override
     public String toString() {
         return "Pregunta: " + pregunta;
     }
